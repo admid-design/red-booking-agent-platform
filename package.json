@@ -1,0 +1,51 @@
+{
+  "name": "red-booking-agent-platform",
+  "version": "1.0.0",
+  "description": "AI-powered booking platform with Twilio voice integration and OpenAI Realtime conversational AI",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "init-db": "ts-node scripts/init-db.ts",
+    "seed": "ts-node scripts/seed-data.ts",
+    "example-call": "ts-node scripts/example-call.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "openai": "^4.28.0",
+    "pg": "^8.11.3",
+    "stripe": "^14.17.0",
+    "twilio": "^5.3.0",
+    "uuid": "^9.0.0",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.5",
+    "@types/pg": "^8.11.0",
+    "@types/uuid": "^9.0.7",
+    "@types/ws": "^8.5.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ]
+  }
+}
