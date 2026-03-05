@@ -1,1 +1,29 @@
-{\n  "name": "red-booking-agent-platform",\n  "version": "1.0.0",\n  "main": "index.js",\n  "scripts": {\n    "start": "node index.js",\n    "build": "tsc"\n  },\n  "dependencies": {\n    "express": "^4.17.1",\n    "twilio": "^3.68.0",\n    "openai": "^3.1.0",\n    "pg": "^8.6.0"\n  },\n  "devDependencies": {\n    "typescript": "^4.5.4"\n  }\n}
+{
+  "name": "red-booking-agent-platform",
+  "version": "1.0.0",
+  "description": "AI-powered booking platform with Twilio voice integration and OpenAI conversational AI",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/index.js",
+    "dev": "ts-node src/index.ts",
+    "example-call": "ts-node scripts/example-call.ts"
+  },
+  "keywords": ["red", "booking", "concierge", "twilio", "openai"],
+  "author": "RED Team",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "openai": "^4.52.0",
+    "pg": "^8.11.3",
+    "twilio": "^4.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.6",
+    "@types/pg": "^8.11.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
