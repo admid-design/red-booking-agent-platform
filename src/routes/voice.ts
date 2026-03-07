@@ -56,6 +56,8 @@ router.post('/test-call', async (req, res) => {
         toNumber = req.body.phoneNumber.trim();
     }
 
+    toNumber = toNumber.replace(/\s+/g, '');
+
     if (!toNumber) {
         return res.status(400).json({ error: 'toNumber or phoneNumber is required' });
     }
