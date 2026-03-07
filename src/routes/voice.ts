@@ -49,11 +49,12 @@ router.post('/status', (req, res) => {
 });
 
 router.post('/test-call', async (req, res) => {
-    const toNumber = typeof req.body?.toNumber === 'string'
-        ? req.body.toNumber.trim()
-        : typeof req.body?.phoneNumber === 'string'
-            ? req.body.phoneNumber.trim()
-            : '';
+    let toNumber = '';
+    if (typeof req.body?.toNumber === 'string') {
+        toNumber = req.body.toNumber.trim();
+    } else if (typeof req.body?.phoneNumber === 'string') {
+        toNumber = req.body.phoneNumber.trim();
+    }
 
     if (!toNumber) {
         return res.status(400).json({ error: 'toNumber or phoneNumber is required' });
@@ -68,7 +69,8 @@ router.post('/test-call', async (req, res) => {
             callSid,
             toNumber,
         });
-    } catch {
+    } catch (error) {
+        console.error('❌ Failed to initiate test call', error);
         return res.status(500).json({
             success: false,
             error: 'Unable to initiate test call',
