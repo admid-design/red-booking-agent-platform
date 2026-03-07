@@ -48,4 +48,36 @@ router.post('/status', (req, res) => {
     res.sendStatus(200);
 });
 
+router.post('/test-call', async (req, res) => {
+    let toNumber = '';
+    if (typeof req.body?.toNumber === 'string') {
+        toNumber = req.body.toNumber.trim();
+    } else if (typeof req.body?.phoneNumber === 'string') {
+        toNumber = req.body.phoneNumber.trim();
+    }
+
+    toNumber = toNumber.replace(/\s+/g, '');
+
+    if (!toNumber) {
+        return res.status(400).json({ error: 'toNumber or phoneNumber is required' });
+    }
+
+    const fromNumber = typeof req.body?.fromNumber === 'string' ? req.body.fromNumber.trim() : undefined;
+
+    try {
+        const callSid = await TwilioService.initiateCall(toNumber, fromNumber);
+        return res.status(200).json({
+            success: true,
+            callSid,
+            toNumber,
+        });
+    } catch (error) {
+        console.error('❌ Failed to initiate test call', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Unable to initiate test call',
+        });
+    }
+});
+
 export default router;
